@@ -799,37 +799,6 @@ nav ul li a.active {
   flex: 5; /* Expanded state */
 }
 
-/* Title Styling */
-.obj-card h3 {
-  font-size: 1.5rem;
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  margin: 0;
-  white-space: nowrap;
-  transition: all 0.5s ease;
-  z-index: 2;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  
-  /* Vertical Text for Desktop Collapsed */
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg) translateX(-50%); /* translateX(-50%) to center correctly */
-  transform-origin: center center;
-  bottom: 20px;
-  left: 50%;
-  width: max-content;
-}
-
-.obj-card.active h3 {
-  /* Reset to normal when active */
-  writing-mode: horizontal-tb;
-  transform: none;
-  bottom: 80px; /* Move up to make room for content */
-  left: 20px;
-  width: auto;
-}
-
 .obj-card .obj-content {
   position: absolute;
   bottom: 20px;
@@ -845,6 +814,12 @@ nav ul li a.active {
 
 .obj-card.active .obj-content {
   opacity: 1; /* Visible when active */
+}
+
+.obj-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  white-space: nowrap; /* Keep title on one line if possible */
 }
 
 /* Mobile Responsiveness for Objectives */
@@ -864,23 +839,5 @@ nav ul li a.active {
   .obj-card.active {
     height: 300px; /* Expanded height on mobile */
     flex: none;
-  }
-
-  /* Mobile Title - Always Horizontal */
-  .obj-card h3 {
-    writing-mode: horizontal-tb;
-    transform: none !important; /* Force horizontal */
-    bottom: 25px;
-    left: 20px;
-    font-size: 1.2rem;
-    width: auto;
-  }
-
-  .obj-card.active h3 {
-    bottom: 120px; /* Move up on mobile active */
-  }
-  
-  .obj-card .obj-content {
-    padding: 1rem;
   }
 }

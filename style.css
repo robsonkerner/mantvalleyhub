@@ -1009,7 +1009,7 @@ nav ul li a.active {
 .community-image {
   flex: 1;
   position: relative;
-  max-height: 520px;
+  min-height: 100%;
   background: #000;
   clip-path: ellipse(100% 100% at 0% 50%);
   border-top-right-radius: 200px;

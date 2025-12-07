@@ -717,7 +717,7 @@ nav ul li a.active {
 }
 
 #partners .carousel-btn.prev {
-    left: 4rem; /* Stick to left */
+    left: 4rem;  /* Stick to left */
 }
 
 #partners .carousel-btn.next {

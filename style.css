@@ -713,7 +713,15 @@ nav ul li a.active {
 /* Full width carousel container for partners if requested to occupy "page full" */
 #partners .carousel-container {
     max-width: 100%;
-    padding: 0 4rem;
+    padding: 0 6rem; /* Reduced padding to push buttons closer to edges */
+}
+
+#partners .carousel-btn.prev {
+    left: 4rem; /* Stick to left */
+}
+
+#partners .carousel-btn.next {
+    right: 4rem; /* Stick to right */
 }
 
 .partners-grid {

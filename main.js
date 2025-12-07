@@ -262,3 +262,23 @@ carouselContainers.forEach(container => {
     prevButton.addEventListener('click', movePrev);
   }
 });
+
+
+// Mobile Menu Toggle
+const menuToggle = document.getElementById('mobile-menu');
+const navMenu = document.querySelector('.nav-menu');
+
+if (menuToggle && navMenu) {
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('is-active');
+    navMenu.classList.toggle('active');
+  });
+
+  // Close menu when clicking a link
+  document.querySelectorAll('.nav-menu ul li a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('is-active');
+      navMenu.classList.remove('active');
+    });
+  });
+}

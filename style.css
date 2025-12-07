@@ -701,21 +701,44 @@ nav ul li a.active {
 /* Partners Section */
 #partners {
   padding: 8rem 0;
-  background: linear-gradient(to top, #050508, var(--bg-color));
+  background-color: #eee; /* Match Objectives background */
+  position: relative;
+  width: 100%;
+}
+
+#partners .section-header h2 {
+    color: #0f172a;
+}
+
+/* Full width carousel container for partners if requested to occupy "page full" */
+#partners .carousel-container {
+    max-width: 100%;
+    padding: 0 4rem;
 }
 
 .partners-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 3rem;
+  display: flex; /* Changed from grid to flex for carousel track usage logic in HTML update coming next */
+  width: 100%;
+  justify-content: center;
   align-items: center;
-  justify-items: center;
+}
+
+.partner-card {
+    min-width: 250px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    margin: 0 1rem;
 }
 
 .partner-logo {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  color: #ccc;
+  color: #64748b;
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: var(--transition);
@@ -723,9 +746,9 @@ nav ul li a.active {
   text-align: center;
 }
 
-.partner-logo:hover {
-  color: #fff;
-  text-shadow: 0 0 15px var(--primary-color);
+.partner-card:hover .partner-logo {
+  color: var(--primary-color);
+  text-shadow: none;
 }
 
 /* Blog Section */

@@ -194,62 +194,71 @@ function removeActiveClasses() {
 
 
 
-// Carousel Logic (Infinite Loop)
-const track = document.querySelector('.carousel-track');
-const nextButton = document.querySelector('.carousel-btn.next');
-const prevButton = document.querySelector('.carousel-btn.prev');
+// Carousel Logic (Infinite Loop) - Supports Multiple Carousels
+const carouselContainers = document.querySelectorAll('.carousel-container');
 
-if (track && track.children.length > 0) {
-  let isMoving = false;
+carouselContainers.forEach(container => {
+  const track = container.querySelector('.carousel-track');
+  const nextButton = container.querySelector('.carousel-btn.next');
+  const prevButton = container.querySelector('.carousel-btn.prev');
 
-  const moveNext = () => {
-    if (isMoving) return;
-    isMoving = true;
+  if (track && track.children.length > 0 && nextButton && prevButton) {
+    let isMoving = false;
 
-    const slideWidth = track.firstElementChild.getBoundingClientRect().width;
-    
-    // Animate to the left
-    track.style.transition = 'transform 0.5s ease-in-out';
-    track.style.transform = `translateX(-${slideWidth}px)`;
+    const moveNext = () => {
+      if (isMoving) return;
+      isMoving = true;
 
-    // After animation, move first item to end and reset
-    track.addEventListener('transitionend', () => {
-      track.style.transition = 'none';
-      track.appendChild(track.firstElementChild);
-      track.style.transform = 'translateX(0)';
+      const firstSlide = track.firstElementChild;
+      if (!firstSlide) {
+         isMoving = false;
+         return;
+      }
+      const slideWidth = firstSlide.getBoundingClientRect().width;
       
-      // Clear event listener to avoid stacking
-      // (using {once: true} is better but let's be safe with old browser support if needed, though {once:true} is widely supported)
-      setTimeout(() => { isMoving = false; }, 0);
-    }, { once: true });
-  };
+      // Animate to the left
+      track.style.transition = 'transform 0.5s ease-in-out';
+      track.style.transform = `translateX(-${slideWidth}px)`;
 
-  const movePrev = () => {
-    if (isMoving) return;
-    isMoving = true;
+      // After animation, move first item to end and reset
+      track.addEventListener('transitionend', () => {
+        track.style.transition = 'none';
+        track.appendChild(track.firstElementChild);
+        track.style.transform = 'translateX(0)';
+        
+        setTimeout(() => { isMoving = false; }, 0);
+      }, { once: true });
+    };
 
-    const slideWidth = track.firstElementChild.getBoundingClientRect().width;
+    const movePrev = () => {
+      if (isMoving) return;
+      isMoving = true;
 
-    // Move last item to start immediately (hidden by negative translate)
-    track.style.transition = 'none';
-    track.prepend(track.lastElementChild);
-    track.style.transform = `translateX(-${slideWidth}px)`;
+      const lastSlide = track.lastElementChild;
+       if (!lastSlide) {
+         isMoving = false;
+         return;
+      }
+      const slideWidth = lastSlide.getBoundingClientRect().width;
 
-    // Force reflow
-    void track.offsetWidth;
+      // Move last item to start immediately (hidden by negative translate)
+      track.style.transition = 'none';
+      track.prepend(lastSlide);
+      track.style.transform = `translateX(-${slideWidth}px)`;
 
-    // Animate to 0
-    track.style.transition = 'transform 0.5s ease-in-out';
-    track.style.transform = 'translateX(0)';
+      // Force reflow
+      void track.offsetWidth;
 
-    track.addEventListener('transitionend', () => {
-      isMoving = false;
-    }, { once: true });
-  };
+      // Animate to 0
+      track.style.transition = 'transform 0.5s ease-in-out';
+      track.style.transform = 'translateX(0)';
 
-  nextButton.addEventListener('click', moveNext);
-  prevButton.addEventListener('click', movePrev);
-  
-  // Optional: Auto-play
-  // setInterval(moveNext, 5000);
-}
+      track.addEventListener('transitionend', () => {
+        isMoving = false;
+      }, { once: true });
+    };
+
+    nextButton.addEventListener('click', moveNext);
+    prevButton.addEventListener('click', movePrev);
+  }
+});

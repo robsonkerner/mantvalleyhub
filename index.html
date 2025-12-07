@@ -187,18 +187,52 @@
       </section>
 
       <section id="partners">
-        <div class="container">
+        <!-- Full width container for carousel, "container" class removed for full width flow if needed, but keeping for margins -->
+        <div class="carousel-container"> 
           <div class="section-header">
             <h2 class="reveal-text">Nossos Parceiros</h2>
             <div class="line"></div>
           </div>
-          <div class="partners-grid">
-            <!-- Placeholders for partners -->
-            <div class="partner-logo reveal-card">Faculdade Unis São Lourenço</div>
-            <div class="partner-logo reveal-card delay-1">Mantiqueira Group</div>
-            <div class="partner-logo reveal-card delay-2">Prefeitura de São Lourenço</div>
-            <div class="partner-logo reveal-card delay-3">Contabilidade Condo+</div>
+          
+          <button class="carousel-btn prev" id="partnerPrevBtn">&#10094;</button>
+          
+          <div class="carousel-track-container">
+            <ul class="carousel-track">
+              <!-- Carousel items -->
+              <li class="carousel-slide">
+                <div class="partner-card reveal-card">
+                   <div class="partner-logo">Faculdade Unis</div>
+                </div>
+              </li>
+              <li class="carousel-slide">
+                <div class="partner-card reveal-card delay-1">
+                   <div class="partner-logo">Mantiqueira Group</div>
+                </div>
+              </li>
+              <li class="carousel-slide">
+                <div class="partner-card reveal-card delay-2">
+                   <div class="partner-logo">Prefeitura S.L.</div>
+                </div>
+              </li>
+              <li class="carousel-slide">
+                 <div class="partner-card reveal-card delay-3">
+                   <div class="partner-logo">Condo+</div>
+                 </div>
+              </li>
+               <li class="carousel-slide">
+                 <div class="partner-card reveal-card delay-1">
+                   <div class="partner-logo">TechStart</div>
+                 </div>
+              </li>
+               <li class="carousel-slide">
+                 <div class="partner-card reveal-card delay-2">
+                   <div class="partner-logo">InovaMinas</div>
+                 </div>
+              </li>
+            </ul>
           </div>
+          
+          <button class="carousel-btn next" id="partnerNextBtn">&#10095;</button>
         </div>
       </section>
 

@@ -945,7 +945,7 @@ nav ul li a.active {
   text-align: center;
   margin-top: 6rem;
   padding: 4rem;
-  
+
   background: var(--glass-bg);
   border-radius: 20px;
   border: 1px solid var(--glass-border);
@@ -1149,7 +1149,7 @@ footer {
 
 .footer-col h4 {
     color: var(--primary-color);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     font-size: 1.2rem;
 }
 

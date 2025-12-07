@@ -841,3 +841,11 @@ nav ul li a.active {
     flex: none;
   }
 }
+
+/* Actions Section */
+#actions {
+  padding: 4rem 0 8rem 0;
+  position: relative;
+  background-color: var(--bg-color);
+  z-index: 10;
+}
